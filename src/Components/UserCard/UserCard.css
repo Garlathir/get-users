@@ -1,0 +1,15 @@
+li {
+  list-style-type: none;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid black;
+}
+
+.user-card p {
+  margin-right: 2%;
+  margin-left: 15%;
+}
