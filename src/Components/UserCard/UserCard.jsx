@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import "./UserCard.css";
 
-const UserCard = ({ firstName, lastName, photoLink, deleteUser }) => {
+const UserCard = memo(({ firstName, lastName, photoLink, deleteUser, id }) => {
   return (
     <li className="user-card">
       <img
@@ -12,9 +12,9 @@ const UserCard = ({ firstName, lastName, photoLink, deleteUser }) => {
         alt="avatar"
       />
       <p>{`${firstName} ${lastName}`}</p>
-      <button onClick={deleteUser}>Delete</button>
+      <button onClick={() => deleteUser(id)}></button>
     </li>
   );
-};
+});
 
 export default UserCard;

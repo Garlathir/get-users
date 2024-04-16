@@ -16,14 +16,14 @@ function App() {
   }
 
   const deleteUser = (id) => {
-    const idx = users.findIndex((el) => el.id === id);
-    let copyUsers = [...users.slice(0, idx), ...users.slice(idx + 1)];
-    setUsers(copyUsers);
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
   };
+
+  const userList = useMemo(() => [...users], [users]);
 
   return (
     <div className="App">
-      <UserList userArray={users} deleteUser={deleteUser} />
+      <UserList userList={userList} deleteUser={deleteUser} />
     </div>
   );
 }

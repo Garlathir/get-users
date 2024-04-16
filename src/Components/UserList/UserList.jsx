@@ -1,16 +1,21 @@
-import React, { memo, useCallback, useMemo } from "react";
+import React, { memo, useCallback } from "react";
 import UserCard from "../UserCard/UserCard";
+import "./UserList.css";
 
-const UserList = ({ userArray, deleteUser }) => {
+const UserList = ({ userList, deleteUser }) => {
+  const deleteFunction = useCallback((id) => {
+    deleteUser(id);
+  }, []);
   return (
-    <ul>
-      {userArray.map((user) => (
+    <ul className="user-list">
+      {userList.map((user) => (
         <UserCard
           key={user.id}
           firstName={user.first_name}
           lastName={user.last_name}
           photoLink={user.avatar}
-          deleteUser={() => deleteUser(user.id)}
+          deleteUser={deleteFunction}
+          id={user.id}
         />
       ))}
     </ul>
